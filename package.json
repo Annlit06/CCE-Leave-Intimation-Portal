@@ -1,0 +1,24 @@
+{
+  "name": "cce-leave-intimation-portal-backend",
+  "version": "1.0.0",
+  "description": "Backend REST API for Christ College of Engineering Leave Intimation Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "cce",
+    "leave-management",
+    "backend",
+    "express",
+    "sqlite"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "cors": "^2.8.6",
+    "express": "^4.22.3"
+  }
+}
