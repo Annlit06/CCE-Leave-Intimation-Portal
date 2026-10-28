@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CCE Leave Intimation Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2f6;--card:#fff;--ink:#0f1e3d;--mut:#586882;--line:#d3dbe5;--acc:#0b7a7d;--accbg:#dcf1f1;--sun:#f2b632;--navy:#0f1e3d;--on:#f4f7fb;--ok:#177a4a;--okbg:#dff3e7;--wait:#8a5a00;--waitbg:#fdf0cf;--bad:#b0312d;--badbg:#fbe2e0;--grey:#586882;--greybg:#e8ecf1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1424;--card:#13203a;--ink:#e9eff8;--mut:#9db0c9;--line:#27385a;--acc:#4cc9cb;--accbg:#10363f;--navy:#060e1c;--ok:#6fd49b;--okbg:#14382b;--wait:#f0c060;--waitbg:#3b2f10;--bad:#ff9a94;--badbg:#431d1d;--grey:#9db0c9;--greybg:#22304a}}
+:root[data-theme="dark"]{--bg:#0a1424;--card:#13203a;--ink:#e9eff8;--mut:#9db0c9;--line:#27385a;--acc:#4cc9cb;--accbg:#10363f;--navy:#060e1c;--ok:#6fd49b;--okbg:#14382b;--wait:#f0c060;--waitbg:#3b2f10;--bad:#ff9a94;--badbg:#431d1d;--grey:#9db0c9;--greybg:#22304a}
+:root{--shadow:0 1px 2px rgba(15,30,61,.06),0 14px 32px -18px rgba(15,30,61,.28);--notch:var(--bg);--r:16px}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}html,body,#app{height:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;color:var(--ink);font:15px/1.55 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;background-color:var(--bg);background-image:radial-gradient(60rem 26rem at 85% -8%,color-mix(in srgb,var(--acc) 15%,transparent),transparent),radial-gradient(color-mix(in srgb,var(--line) 70%,transparent) 1px,transparent 1px);background-size:auto,24px 24px;background-repeat:no-repeat,repeat}
+#app{height:auto;min-height:100%}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;margin:0;font-weight:700;letter-spacing:-.015em}
+h3{font-size:17px}
+button,input,select,textarea{font:inherit;color:inherit}
+.bar{position:sticky;top:0;z-index:20;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 28px;background:color-mix(in srgb,var(--card) 84%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;gap:11px;align-items:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em}
+.brand i{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:linear-gradient(145deg,#1d3466,var(--navy));color:var(--sun);font-style:normal;font-size:20px;box-shadow:0 6px 14px -6px rgba(15,30,61,.6),inset 0 0 0 1px rgba(255,255,255,.12)}
+.me{display:flex;gap:10px;align-items:center}
+.me small{display:block;color:var(--mut);line-height:1.2}.me b{line-height:1.2}
+.av{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:linear-gradient(145deg,var(--accbg),color-mix(in srgb,var(--acc) 30%,var(--accbg)));color:var(--acc);font-weight:700;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--acc) 35%,transparent)}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 15px;cursor:pointer;font-weight:500;transition:border-color .15s,box-shadow .15s,transform .15s}
+.pill:hover{border-color:var(--acc);box-shadow:0 0 0 3px var(--accbg)}.pill:active{transform:scale(.97)}
+main{max-width:1060px;margin:0 auto;padding:32px 22px 64px}
+.hello h2{font-size:clamp(30px,4.4vw,42px);line-height:1.08}.hello p{margin:8px 0 22px;font-size:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}
+.stat{position:relative;border-radius:var(--r);padding:16px 20px;display:flex;align-items:baseline;gap:12px;box-shadow:var(--shadow);overflow:hidden;border:1px solid color-mix(in srgb,currentColor 18%,transparent)}
+.stat::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:currentColor}
+.stat b{font:800 38px/1 "Bricolage Grotesque",sans-serif}.stat span{font-weight:600}
+.grid{display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.form{position:relative;overflow:hidden;padding-top:26px}
+.form::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--sun),#f7d36e 50%,var(--acc))}
+@media(min-width:861px){.form{position:sticky;top:84px}}
+.chip{display:inline-block;background:var(--accbg);color:var(--acc);border-radius:99px;padding:3px 13px;font-size:13px;font-weight:700;margin-top:10px}
+label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px;color:var(--ink)}
+input,select,textarea{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);transition:border-color .15s,box-shadow .15s,background .15s}
+input:hover,select:hover,textarea:hover{border-color:color-mix(in srgb,var(--acc) 45%,var(--line))}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc);background:var(--card);box-shadow:0 0 0 4px var(--accbg)}
+input[type=file]{padding:9px;border-style:dashed;cursor:pointer}
+textarea{min-height:84px;resize:vertical}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.btn{background:var(--navy);color:var(--on);border:0;border-radius:10px;padding:11px 20px;cursor:pointer;font-weight:600;box-shadow:0 6px 14px -8px rgba(15,30,61,.7);transition:transform .15s,box-shadow .15s,filter .15s}
+.btn.go{background:linear-gradient(135deg,#119a9d,var(--acc));color:#fff;box-shadow:0 8px 18px -8px color-mix(in srgb,var(--acc) 80%,#000)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);font-weight:500;box-shadow:none}
+.btn.no{background:transparent;color:var(--bad);border:1.5px solid var(--bad);box-shadow:none}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn:active{transform:translateY(0) scale(.98)}
+.btn.no:hover,.btn.ghost:hover{background:var(--badbg)}.btn.ghost:hover{background:var(--greybg)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.row>*{flex:1 1 130px}.row.fit>*{flex:0 0 auto}
+.tabs{display:inline-flex;gap:4px;padding:4px;margin-bottom:22px;background:var(--greybg);border-radius:13px}
+.tabs button{border:0;background:none;padding:9px 20px;cursor:pointer;font-weight:600;color:var(--mut);border-radius:10px;transition:background .15s,color .15s}
+.tabs button:hover{color:var(--ink)}
+.tabs button.on{color:var(--ink);background:var(--card);box-shadow:0 2px 8px -2px rgba(15,30,61,.25)}
+.slip{display:grid;grid-template-columns:104px 1fr;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:18px;box-shadow:var(--shadow)}
+.stub{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 6px;border-right:2px dashed color-mix(in srgb,currentColor 35%,var(--line));text-align:center}
+.stub::before,.stub::after{content:"";position:absolute;right:-10px;width:18px;height:18px;border-radius:50%;background:var(--notch);border:1px solid var(--line)}
+.stub::before{top:-10px}.stub::after{bottom:-10px}
+.stub b{font:800 42px/1 "Bricolage Grotesque",sans-serif}.stub span{font-weight:700;font-size:15px}.stub em{font-style:normal;font-size:12px;margin-top:8px;font-weight:600;background:color-mix(in srgb,currentColor 14%,transparent);padding:1px 9px;border-radius:99px}
+.slip.Pending .stub{background:var(--waitbg);color:var(--wait)}.slip.Approved .stub{background:var(--okbg);color:var(--ok)}.slip.Rejected .stub{background:var(--badbg);color:var(--bad)}.slip.Cancelled .stub{background:var(--greybg);color:var(--grey)}
+.body{padding:18px 22px;min-width:0}
+.top{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.stamp{flex:none;border:3px double currentColor;border-radius:7px;padding:2px 11px;font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-5deg)}
+.s-Pending{color:var(--wait)}.s-Approved{color:var(--ok)}.s-Rejected{color:var(--bad)}.s-Cancelled{color:var(--grey)}
+.stat.s-Pending{background:var(--waitbg)}.stat.s-Approved{background:var(--okbg)}.stat.s-Rejected{background:var(--badbg)}
+.mut{color:var(--mut);font-size:13px}
+.err{color:var(--bad);background:var(--badbg);border-radius:9px;padding:8px 12px;font-size:13px;margin:12px 0 0;font-weight:500}.ok{color:var(--ok);background:var(--okbg);border-radius:9px;padding:8px 12px;font-size:13px;margin:12px 0 0;font-weight:500}
+.trk{display:flex;list-style:none;padding:0;margin:18px 0 14px}
+.trk li{flex:1;position:relative;font-size:12px;color:var(--mut);padding-top:24px}
+.trk i{position:absolute;top:0;left:0;width:14px;height:14px;border-radius:50%;background:var(--card);border:3px solid var(--line);z-index:1}
+.trk li::before{content:"";position:absolute;top:5.5px;left:0;right:0;height:3px;background:var(--line);border-radius:3px}
+.trk li:last-child::before{display:none}
+.trk li.done{color:var(--ink);font-weight:600}.trk li.done i{background:var(--acc);border-color:var(--acc)}.trk li.done::before{background:var(--acc)}
+.trk li.now i{background:var(--sun);border-color:var(--sun);box-shadow:0 0 0 5px var(--waitbg)}.trk li.bad i{background:var(--bad);border-color:var(--bad)}
+.rem{background:linear-gradient(90deg,var(--accbg),transparent 80%);border-left:4px solid var(--acc);border-radius:0 10px 10px 0;padding:10px 14px;margin:12px 0;font-size:14px}
+details{font-size:13px;color:var(--mut)}summary{cursor:pointer;font-weight:600}summary:hover{color:var(--acc)}
+.meter{height:11px;border-radius:99px;background:var(--greybg);overflow:hidden;flex:1}.meter>span{display:block;height:100%;background:linear-gradient(90deg,var(--acc),#38b6b8);border-radius:99px;transition:width .5s}.meter.hot>span{background:linear-gradient(90deg,#e0615c,var(--bad))}
+.line{display:grid;grid-template-columns:150px 1fr 110px;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}.line:last-child{border:0}
+.line .meter{display:block}
+.flag{color:var(--bad);font-weight:700}
+.dot{background:var(--bad);color:#fff;border-radius:99px;font-size:11px;font-weight:700;padding:1px 7px;margin-left:7px}
+.note{padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}.note.new{font-weight:600}
+.empty{text-align:center;padding:44px 20px;color:var(--mut);border:2px dashed var(--line);border-radius:var(--r);background:color-mix(in srgb,var(--card) 50%,transparent)}
+.login{display:grid;grid-template-columns:1.1fr 1fr;min-height:100%}
+@media(max-width:860px){.login{grid-template-columns:1fr}}
+.hero{--notch:var(--navy);background:radial-gradient(40rem 28rem at 15% 105%,rgba(76,201,203,.28),transparent 60%),radial-gradient(24rem 20rem at 95% 0,rgba(242,182,50,.18),transparent 60%),linear-gradient(160deg,#16294f,var(--navy) 65%);color:var(--on);padding:52px;display:flex;flex-direction:column;justify-content:space-between;gap:36px}
+.hero .brand i{background:var(--sun);color:var(--navy)}
+.hero h1{font-size:clamp(38px,5.2vw,64px);line-height:1.02;letter-spacing:-.03em}.hero p{font-size:17.5px;max-width:450px;color:#b9c7dc}
+.hero .slip{color:#0f1e3d;max-width:450px;transform:rotate(-2deg);border:0;box-shadow:0 30px 60px -22px rgba(0,0,0,.65);animation:drop .8s cubic-bezier(.2,.9,.3,1) both}
+.hero .slip,.hero .slip .body{background:#fff}.hero .mut{color:#586882}
+@keyframes drop{from{opacity:0;transform:translateY(-34px) rotate(-7deg)}to{opacity:1;transform:rotate(-2deg)}}
+.hero .stamp{animation:thud .7s .6s both cubic-bezier(.2,.9,.3,1.2)}
+@keyframes thud{0%{transform:scale(2.4) rotate(-16deg);opacity:0}55%{opacity:1}100%{transform:scale(1) rotate(-5deg)}}
+@media(prefers-reduced-motion:reduce){.hero .stamp,.hero .slip{animation:none}.btn,.pill,.meter>span{transition:none}}
+.panel{padding:52px 48px;display:flex;flex-direction:column;justify-content:center;gap:8px;max-width:540px;width:100%;margin:0 auto}
+.panel h2{font-size:34px}
+.who{display:flex;gap:14px;align-items:center;text-align:left;width:100%;background:var(--card);border:1.5px solid var(--line);border-radius:13px;padding:11px 15px;cursor:pointer;margin-top:9px;box-shadow:var(--shadow);transition:border-color .15s,transform .15s,box-shadow .15s}
+.who:hover{border-color:var(--acc);transform:translateX(3px);box-shadow:0 0 0 4px var(--accbg)}.who small{display:block;color:var(--mut)}
+@media(max-width:640px){.bar{padding:10px 16px}.brand{font-size:17px}.me>span:not(.av){display:none}.me{gap:8px}
+.hero,.panel{padding:30px 22px}main{padding:22px 14px 48px}.stat{flex-direction:column;gap:4px;padding:14px 14px 14px 18px}.stat b{font-size:30px}
+.slip{grid-template-columns:78px 1fr}.stub b{font-size:32px}.body{padding:14px}.line{grid-template-columns:1fr;gap:6px}.tabs{display:flex}.tabs button{flex:1;padding:9px 8px}}
+</style></head>
+<body>
+<div id="app"></div>
+<script>
+const KEY='cce-leave-v1';let mem=null;
+const seed=()=>({n:20,users:[
+{id:'u1',name:'Nikhil Menon',email:'nikhil@cce.edu',pw:'cce123',role:'student',cls:'CSE-A'},
+{id:'u2',name:'Sneha Thomas',email:'sneha@cce.edu',pw:'cce123',role:'student',cls:'CSE-A'},
+{id:'u3',name:'Arjun Das',email:'arjun@cce.edu',pw:'cce123',role:'student',cls:'CSE-B'},
+{id:'m1',name:'Dr. Meera Nair',email:'meera@cce.edu',pw:'cce123',role:'mentor',cls:'CSE-A'},
+{id:'m2',name:'Prof. Joseph Paul',email:'joseph@cce.edu',pw:'cce123',role:'mentor',cls:'CSE-B'},
+{id:'h1',name:'Dr. Suresh Kumar',email:'hod@cce.edu',pw:'cce123',role:'hod',cls:''}],
+reqs:[
+{id:1,sid:'u2',from:'2026-09-20',to:'2026-09-24',type:'Medical',reason:'Viral fever, doctor advised rest.',proof:'medical_cert.pdf',status:'Approved',remark:'Get well soon. Keep the certificate for records.',by:'m1',locked:true,created:'2026-09-19T09:00:00Z',log:[{t:'2026-09-19T09:00:00Z',who:'Sneha Thomas',what:'Submitted'},{t:'2026-09-19T11:30:00Z',who:'Dr. Meera Nair',what:'Approved'}]},
+{id:2,sid:'u2',from:'2026-10-12',to:'2026-10-13',type:'Emergency',reason:'Family emergency.',proof:'',status:'Approved',remark:'Approved. Please collect class notes.',by:'m1',locked:true,created:'2026-10-11T08:00:00Z',log:[{t:'2026-10-11T08:00:00Z',who:'Sneha Thomas',what:'Submitted'},{t:'2026-10-11T08:40:00Z',who:'Dr. Meera Nair',what:'Approved'}]},
+{id:3,sid:'u3',from:'2026-10-05',to:'2026-10-07',type:'Casual',reason:'Short trip with friends.',proof:'',status:'Rejected',remark:'Internal exams are scheduled that week.',by:'m2',locked:true,created:'2026-10-03T10:00:00Z',log:[{t:'2026-10-03T10:00:00Z',who:'Arjun Das',what:'Submitted'},{t:'2026-10-03T15:00:00Z',who:'Prof. Joseph Paul',what:'Rejected'}]},
+{id:4,sid:'u1',from:'2026-10-26',to:'2026-10-27',type:'Casual',reason:'Cousin’s wedding.',proof:'',status:'Pending',remark:'',by:'',locked:false,created:'2026-10-20T18:00:00Z',log:[{t:'2026-10-20T18:00:00Z',who:'Nikhil Menon',what:'Submitted'}]}],
+notes:[{id:1,uid:'m1',text:'New leave request from Nikhil Menon (26 Oct 2026 to 27 Oct 2026).',t:'2026-10-20T18:00:00Z',read:false}]});
+function load(){try{const s=localStorage.getItem(KEY);if(s)return JSON.parse(s)}catch(e){}return mem||seed()}
+function save(){mem=db;try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){}}
+let db=load(),me=null,ui={};
+const resetUi=()=>ui={tab:'',bell:false,f:{from:'',to:'',type:'Casual',reason:'',proof:''},err:{},msg:'',q:'',st:'',thr:5,loginErr:''};resetUi();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const U=id=>db.users.find(u=>u.id===id)||{name:'Unknown'};
+const now=()=>new Date().toISOString(),today=()=>now().slice(0,10);
+const fd=d=>new Date(d+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+const ft=t=>new Date(t).toLocaleString('en-IN',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+const nd=r=>Math.round((Date.parse(r.to)-Date.parse(r.from))/864e5)+1;
+const notify=(uid,text)=>db.notes.unshift({id:db.n++,uid,text,t:now(),read:false});
+const roleName={student:'Student',mentor:'Class mentor',hod:'HOD'};
+
+function visible(){
+  if(me.role==='student')return db.reqs.filter(r=>r.sid===me.id);
+  if(me.role==='mentor')return db.reqs.filter(r=>U(r.sid).cls===me.cls);
+  return db.reqs;
+}
+const ini=n=>n.replace(/^(Dr\.|Prof\.)\s*/,'').split(' ').map(w=>w[0]).slice(0,2).join('');
+const mon=d=>new Date(d+'T00:00:00').toLocaleDateString('en-IN',{month:'short'}),dn=d=>+d.slice(8,10);
+function tracker(r){
+  const dec=r.status==='Approved'||r.status==='Rejected',x=(c,l)=>`<li class="${c}"><i></i>${l}</li>`;
+  if(r.status==='Cancelled')return `<ol class="trk">${x('done','Submitted')}${x('bad','Cancelled')}</ol>`;
+  return `<ol class="trk">${x('done','Submitted')}${x(dec?'done':'now','Mentor review')}${x(dec?'done':'',dec?r.status:'Decision')}${x(dec?'done':'','Archived')}</ol>`;
+}
+function card(r,act){
+  const s=U(r.sid);
+  return `<article class="slip ${r.status}"><div class="stub"><b>${dn(r.from)}</b><span>${mon(r.from)}</span><em>${nd(r)} day${nd(r)>1?'s':''}</em></div><div class="body">
+  <div class="top"><div><h3>${me.role==='student'?esc(r.type)+' leave':esc(s.name)+' <span class="mut">'+esc(s.cls)+'</span>'}</h3>
+  <div class="mut">${fd(r.from)} to ${fd(r.to)}${me.role==='student'?'':' · '+esc(r.type)}</div></div><span class="stamp s-${r.status}">${r.status}</span></div>
+  <p style="margin:10px 0 0">${esc(r.reason)}</p>${r.proof?`<div class="mut" style="margin-top:4px">Proof attached: ${esc(r.proof)}</div>`:''}
+  ${tracker(r)}
+  ${r.remark?`<div class="rem"><b>${esc(U(r.by).name)}:</b> ${esc(r.remark)}</div>`:''}
+  ${act==='cancel'&&r.status==='Pending'?`<button class="btn ghost" data-act="cancel" data-id="${r.id}">Cancel request</button>`:''}
+  ${act==='decide'&&r.status==='Pending'?`<label for="rm${r.id}">Your remark (required)</label><textarea id="rm${r.id}" placeholder="Say why you are approving or rejecting"></textarea>
+   ${ui.err[r.id]?`<div class="err">${ui.err[r.id]}</div>`:''}
+   <div class="row fit" style="margin-top:10px"><button class="btn go" data-act="decide" data-id="${r.id}" data-d="Approved">Approve</button><button class="btn no" data-act="decide" data-id="${r.id}" data-d="Rejected">Reject</button></div>`:''}
+  <details style="margin-top:8px"><summary>Audit trail</summary>${r.log.map(l=>`<div>${ft(l.t)} · ${esc(l.who)} · ${esc(l.what)}</div>`).join('')}</details></div></article>`;
+}
+function loginView(){
+  return `<div class="login"><section class="hero"><div class="brand"><i>C</i>CCE Leave Portal</div>
+  <div><h1>Leave requests that never get lost.</h1><p style="margin-top:16px">Submit, route, decide and archive every leave request in one place, with a record anyone can audit.</p></div>
+  <article class="slip Approved" aria-hidden="true"><div class="stub"><b>12</b><span>Oct</span><em>2 days</em></div><div class="body"><div class="top"><div><h3>Emergency leave</h3><div class="mut">Sneha Thomas · CSE-A</div></div><span class="stamp s-Approved">Approved</span></div>
+  <div class="rem" style="margin-bottom:0">Approved. Please collect class notes.</div></div></article></section>
+  <section class="panel"><h2 style="font-size:28px">Sign in</h2><p class="mut">Use your college email. Demo password for every account: cce123.</p>
+  <label for="em">Email</label><input id="em" type="email" autocomplete="username"><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password">
+  ${ui.loginErr?`<div class="err">${ui.loginErr}</div>`:''}
+  <div style="margin-top:14px"><button class="btn go" data-act="login">Sign in</button></div>
+  <h3 style="margin-top:28px">Or open a demo account</h3>
+  ${[['nikhil@cce.edu','Nikhil Menon','Student · CSE-A'],['meera@cce.edu','Dr. Meera Nair','Class mentor · CSE-A'],['hod@cce.edu','Dr. Suresh Kumar','Head of department']].map(([e,n,r])=>`<button class="who" data-act="demo" data-e="${e}"><span class="av">${ini(n)}</span><span><b>${n}</b><small>${r}</small></span></button>`).join('')}
+  <p><button class="pill" data-act="reset">Reset demo data</button></p></section></div>`;
+}
+function head(){
+  const mine=db.notes.filter(n=>n.uid===me.id),un=mine.filter(n=>!n.read).length;
+  return `<header class="bar"><div class="brand"><i>C</i>CCE Leave Portal</div><div class="me">
+  <button class="pill" data-act="bell" aria-label="Notifications">Notifications${un?`<span class="dot">${un}</span>`:''}</button>
+  <span class="av">${ini(me.name)}</span><span><b>${esc(me.name)}</b><small>${roleName[me.role]}${me.cls?' · '+me.cls:''}</small></span><button class="pill" data-act="logout">Sign out</button></div></header>
+  ${ui.bell?`<main style="padding-bottom:0"><div class="card"><h3>Notifications</h3>${mine.length?mine.map(n=>`<div class="note ${n.read?'':'new'}">${esc(n.text)} <span class="mut">${ft(n.t)}</span></div>`).join(''):'<p class="mut">Nothing yet. Decisions and new requests will show up here.</p>'}</div></main>`:''}`;
+}
+function heroTop(){
+  const v=visible(),c=s=>v.filter(r=>r.status===s).length;
+  const msg=me.role==='student'?'Submit a request and follow it from your desk to the mentor’s decision.':me.role==='mentor'?`Requests from ${me.cls} wait here for your decision.`:'See leave patterns across every class and catch shortages early.';
+  return `<section class="hello"><h2>Welcome, ${esc(me.name.replace(/^(Dr\.|Prof\.)\s*/,'').split(' ')[0])}</h2><p class="mut">${msg}</p></section>
+  <div class="stats">${['Pending','Approved','Rejected'].map(s=>`<div class="stat s-${s}"><b>${c(s)}</b><span>${s}</span></div>`).join('')}</div>`;
+}
+function studentView(){
+  const f=ui.f,e=ui.err,mine=visible().slice().sort((a,b)=>b.created.localeCompare(a.created));
+  return heroTop()+`<div class="grid"><div class="card form"><h2 style="font-size:22px">New leave slip</h2>
+  <div class="row"><div><label for="from">From</label><input id="from" type="date" data-f="from" value="${f.from}"></div><div><label for="to">To</label><input id="to" type="date" data-f="to" value="${f.to}"></div></div>
+  ${f.from&&f.to&&f.to>=f.from?`<span class="chip">${nd(f)} day${nd(f)>1?'s':''}</span>`:''}
+  <label for="type">Leave type</label><select id="type" data-f="type">${['Casual','Medical','Emergency','Academic or event'].map(t=>`<option ${f.type===t?'selected':''}>${t}</option>`).join('')}</select>
+  <label for="reason">Reason</label><textarea id="reason" data-f="reason" placeholder="A line or two is enough">${esc(f.reason)}</textarea>
+  <label for="proof">Proof (optional: PDF, JPG or PNG, up to 5 MB)</label><input id="proof" type="file" accept=".pdf,.jpg,.jpeg,.png" data-act="file">
+  ${f.proof?`<div class="mut" style="margin-top:6px">Attached: ${esc(f.proof)} <button class="pill" data-act="rmfile" style="padding:1px 10px">Remove</button></div>`:''}
+  ${e.form?`<div class="err">${e.form}</div>`:''}${ui.msg?`<div class="ok">${ui.msg}</div>`:''}
+  <div style="margin-top:16px"><button class="btn go" data-act="submit">Send to my mentor</button></div></div>
+  <div><h2 style="margin-bottom:14px;font-size:22px">My leave slips</h2>${mine.length?mine.map(r=>card(r,'cancel')).join(''):'<div class="empty">No leave slips yet.<br>Fill in the form to send your first request.</div>'}</div></div>`;
+}
+function filters(){
+  return `<div class="card row"><div><label for="q">Search by student or reason</label><input id="q" data-q="q" value="${esc(ui.q)}"></div>
+  <div><label for="st">Status</label><select id="st" data-q="st">${['','Pending','Approved','Rejected','Cancelled'].map(s=>`<option value="${s}" ${ui.st===s?'selected':''}>${s||'All'}</option>`).join('')}</select></div></div>`;
+}
+function history(){
+  const q=ui.q.toLowerCase();
+  const list=visible().filter(r=>(!ui.st||r.status===ui.st)&&(!q||(U(r.sid).name+' '+r.reason).toLowerCase().includes(q))).sort((a,b)=>b.created.localeCompare(a.created));
+  return filters()+(list.length?list.map(r=>card(r,'')).join(''):'<div class="empty">No requests match these filters.<br>Clear the search or choose another status.</div>');
+}
+function mentorView(){
+  const pend=visible().filter(r=>r.status==='Pending');
+  return heroTop()+`<div class="tabs"><button class="${ui.tab==='pending'?'on':''}" data-act="tab" data-t="pending">Pending (${pend.length})</button><button class="${ui.tab==='hist'?'on':''}" data-act="tab" data-t="hist">History</button></div>`+
+  (ui.tab==='pending'?(pend.length?pend.map(r=>card(r,'decide')).join(''):'<div class="empty">All caught up.<br>New requests from your class will appear here.</div>'):history());
+}
+function hodView(){
+  const stu=db.users.filter(u=>u.role==='student'),cl=[...new Set(stu.map(u=>u.cls))];
+  const days=u=>db.reqs.filter(r=>r.sid===u.id&&r.status==='Approved').reduce((a,r)=>a+nd(r),0);
+  const cd=c=>stu.filter(u=>u.cls===c).reduce((a,u)=>a+days(u),0),mx=Math.max(1,...cl.map(cd));
+  const body=ui.tab==='dash'?`<div class="card"><h3>Approved leave days by class</h3>${cl.map(c=>`<div class="line"><b>${c}</b><div class="meter"><span style="width:${cd(c)/mx*100}%"></span></div><span>${cd(c)} days</span></div>`).join('')}</div>
+  <div class="card"><h3>Attendance risk</h3><label for="thr">Flag students at or above this many approved days</label><input id="thr" type="number" min="1" value="${ui.thr}" data-q="thr" style="max-width:120px">
+  ${stu.map(u=>{const d=days(u),hot=d>=ui.thr;return `<div class="line"><span><b>${esc(u.name)}</b><br><span class="mut">${u.cls}</span></span><div class="meter ${hot?'hot':''}"><span style="width:${Math.min(100,d/ui.thr*100)}%"></span></div><span class="${hot?'flag':''}">${d} days${hot?' · review':''}</span></div>`}).join('')}</div>`:history();
+  return heroTop()+`<div class="tabs"><button class="${ui.tab==='dash'?'on':''}" data-act="tab" data-t="dash">Dashboard</button><button class="${ui.tab==='hist'?'on':''}" data-act="tab" data-t="hist">History</button></div>`+body;
+}
+function render(){
+  const a=document.getElementById('app');
+  if(!me){a.innerHTML=loginView();return}
+  if(!ui.tab)ui.tab=me.role==='mentor'?'pending':me.role==='hod'?'dash':'';
+  a.innerHTML=head()+'<main>'+(me.role==='student'?studentView():me.role==='mentor'?mentorView():hodView())+'</main>';
+}
+function signIn(u){me=u;resetUi();render()}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act;
+  if(a==='file')return;
+  if(a==='login'){const em=document.getElementById('em').value.trim().toLowerCase(),pw=document.getElementById('pw').value;
+    const u=db.users.find(x=>x.email===em&&x.pw===pw);if(u)return signIn(u);ui.loginErr='Email or password is incorrect. Check both and try again.';return render()}
+  if(a==='demo')return signIn(db.users.find(x=>x.email===b.dataset.e));
+  if(a==='reset'){db=seed();save();ui.loginErr='';return render()}
+  if(a==='logout'){me=null;resetUi();return render()}
+  if(a==='bell'){if(ui.bell)db.notes.filter(n=>n.uid===me.id).forEach(n=>n.read=true);ui.bell=!ui.bell;save();return render()}
+  if(a==='tab'){ui.tab=b.dataset.t;ui.q='';ui.st='';return render()}
+  if(a==='rmfile'){ui.f.proof='';return render()}
+  if(a==='cancel'){const r=db.reqs.find(x=>x.id==b.dataset.id);if(r&&r.status==='Pending'){r.status='Cancelled';r.locked=true;r.log.push({t:now(),who:me.name,what:'Cancelled by student'});save()}return render()}
+  if(a==='decide'){
+    const r=db.reqs.find(x=>x.id==b.dataset.id),rm=document.getElementById('rm'+r.id).value.trim();
+    if(r.locked)return render();
+    if(!rm){ui.err[r.id]='Enter a remark before you approve or reject.';return render()}
+    delete ui.err[r.id];r.status=b.dataset.d;r.remark=rm;r.by=me.id;r.locked=true;
+    r.log.push({t:now(),who:me.name,what:b.dataset.d+' with remark'},{t:now(),who:'System',what:'Archived'});
+    notify(r.sid,`Your leave request for ${fd(r.from)} to ${fd(r.to)} was ${b.dataset.d.toLowerCase()}. Remark: ${rm}`);save();return render()}
+  if(a==='submit'){
+    const f=ui.f;ui.msg='';ui.err={};
+    let m='';
+    if(!f.from||!f.to||!f.reason.trim())m='Fill in the from date, to date and reason.';
+    else if(f.to<f.from)m='The to date cannot be before the from date.';
+    else if(db.reqs.some(r=>r.sid===me.id&&(r.status==='Pending'||r.status==='Approved')&&f.from<=r.to&&f.to>=r.from))m='These dates overlap with one of your active requests.';
+    else if(!db.users.find(u=>u.role==='mentor'&&u.cls===me.cls))m='No class mentor is assigned to your class. Contact the admin.';
+    if(m){ui.err.form=m;return render()}
+    const mentor=db.users.find(u=>u.role==='mentor'&&u.cls===me.cls);
+    const r={id:db.n++,sid:me.id,from:f.from,to:f.to,type:f.type,reason:f.reason.trim(),proof:f.proof,status:'Pending',remark:'',by:'',locked:false,created:now(),log:[{t:now(),who:me.name,what:'Submitted'},{t:now(),who:'System',what:'Routed to '+mentor.name}]};
+    db.reqs.push(r);notify(mentor.id,`New leave request from ${me.name} (${fd(r.from)} to ${fd(r.to)}).`);save();
+    ui.f={from:'',to:'',type:'Casual',reason:'',proof:''};ui.msg=`Request submitted and sent to ${mentor.name}.`;return render()}
+});
+document.addEventListener('input',e=>{const k=e.target.dataset.f;if(k)ui.f[k]=e.target.value});
+document.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.dataset.f)ui.f[t.dataset.f]=t.value;
+  if(t.dataset.q){ui[t.dataset.q]=t.dataset.q==='thr'?Math.max(1,+t.value||1):t.value;render()}
+  if(t.dataset.act==='file'){const fl=t.files[0];if(!fl)return;ui.err={};
+    if(!/\.(pdf|jpe?g|png)$/i.test(fl.name)){ui.err.form='Proof must be a PDF, JPG or PNG file.';ui.f.proof=''}
+    else if(fl.size>5*1048576){ui.err.form='Proof must be 5 MB or smaller.';ui.f.proof=''}
+    else ui.f.proof=fl.name;
+    render()}
+});
+render();
+</script></body></html>
